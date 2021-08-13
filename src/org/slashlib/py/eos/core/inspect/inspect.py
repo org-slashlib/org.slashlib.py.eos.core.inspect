@@ -2,7 +2,7 @@
 #
 #   © 2021, slashlib.org.
 #
-#   utilities.py  is  distributed  WITHOUT ANY  WARRANTY;  without  even the
+#   inspect.py  is  distributed  WITHOUT  ANY  WARRANTY;  without  even  the
 #   implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 #
 """ defines utilities for use with decorators """
@@ -13,8 +13,11 @@ from   typing       import Any
 from   typing       import Callable
 from   typing       import cast
 from   typing       import Type
+from   typing       import TypeVar
 
-def isclass( arg: Type ) -> bool:
+T = TypeVar( 'T' )
+
+def isclass( arg: Type[ T ]) -> bool:
     """
         Returns:
             True, if arg is of type {class}; False otherwise
@@ -42,14 +45,15 @@ def ismethodorfunction( arg: Callable  ) -> bool:
     """
     return ismethod( arg ) or isfunction( arg )
 
-def isstaticmethod( cls: Type, arg: Callable ) -> bool:
+def isstaticmethod( cls: Type[ T ], arg: Callable ) -> bool:
     """
         Returns:
             True, if arg is of type '@staticmethod def funct()'; False otherwise
     """
     if  ( ismethodorfunction( arg )):
           try:
-              cls      = cls if isclass( cls ) else cls.__class__
+              # make sure, this works even without type checking
+              cls      = cls if isclass( cls ) else cast( Any, cls ).__class__
               argname  = arg.__name__
               statattr = inspect.getattr_static( cls, argname )
               return isinstance( statattr, staticmethod ) and \
@@ -58,12 +62,13 @@ def isstaticmethod( cls: Type, arg: Callable ) -> bool:
               return False
     else: return False
 
-def isclassmethod( cls: Type, arg: Callable ) -> bool:
+def isclassmethod( cls: Type[ T ], arg: Callable ) -> bool:
     """
         Returns:
             True, if arg is of type '@classmethod def funct()'; False otherwise
     """
     if  ( ismethod( arg )):
-          cls = cls if isclass( cls ) else cls.__class__
+          # make sure, this works even without type checking
+          cls = cls if isclass( cls ) else cast( Any, cls ).__class__
           return cast( Any, arg ).__self__ is cls
     else: return False
