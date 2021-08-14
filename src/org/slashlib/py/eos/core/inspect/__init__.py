@@ -5,6 +5,7 @@
 #   __init__.py  is distributed  WITHOUT  ANY  WARRANTY;  without  even  the
 #   implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 #
+""" org.slashlib.py.eos.core.inspect - inspection functions """
 from __future__     import absolute_import
 
 from .inspect       import isclass

@@ -5,7 +5,7 @@
 #   inspect.py  is  distributed  WITHOUT  ANY  WARRANTY;  without  even  the
 #   implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 #
-""" defines utilities for use with decorators """
+""" provides extended inspection functions """
 from   __future__   import absolute_import
 
 import inspect
