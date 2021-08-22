@@ -25,3 +25,108 @@ This project is in alpha state.
 ## usage ##
 
 <code>org.slashlib.py.eos.core.inspect</code> is a package required by PyEOS.
+
+### <code>isclass</code> ###
+Returns <code>True</code>, if <code>arg</code> is of type <code>class</code>; <code>False</code> otherwise.
+<table>
+  <tr><td>Signature</td>
+      <td colspan="2"><code>def isclass( arg: Type[ T ]) -> bool</code></td>
+      </tr>
+  <tr><td>Parameters</td>
+      <td><code>arg</code></td>
+      <td>Any type definition</td>
+      </tr>
+</table>
+
+### <code>isclassmethod</code> ###
+Returns <code>True</code>, if <code>arg</code> is of type <code>@classmethod def funct()</code>; <code>False</code> otherwise.
+<table style="padding:0">
+  <tr><td>Signature</td>
+      <td colspan="2"><code>def isclassmethod( cls: Type[ T ], arg: Callable ) -> bool</code></td>
+      </tr>
+  <tr><td style="vertical-align:top">Parameters</td>
+      <td>
+        <table style="border:0;border-collapse: collapse;margin:0;width:100%">
+          <tr>
+            <td><code>cls</code></td>
+            <td>A class</td>
+            </tr>
+            <tr>
+              <td><code>arg</code></td>
+              <td>Any callable</td>
+              </tr>
+        </table>
+      </td>
+      </tr>
+</table>
+
+
+### <code>isfunction</code> ###
+Returns <code>True</code>, if <code>arg</code> is of type <code>function</code>; <code>False</code> otherwise.  
+
+Note: In Python, function definitions in classes are not bound. Therefor they are categorized as functions, not as methods.
+
+Future: This will change in future, to enable recognition of functions which belong to classes and such, that do not belong to classes (like inner functions, anonymous functions, ...whatever)
+
+<table>
+  <tr><td>Signature</td>
+      <td colspan="2"><code>def isfunction( arg: Callable ) -> bool</code></td>
+      </tr>
+  <tr><td>Parameters</td>
+      <td><code>arg</code></td>
+      <td>Any callable</td>
+      </tr>
+</table>
+
+### <code>ismethod</code> ###
+Returns <code>True</code>, if <code>arg</code> is of type <code>method</code>; <code>False</code> otherwise.
+
+Note: In Python, methods are bound functions. <code>ismethod</code> will not reveal function definitions in classes as methods.  
+
+Future: This will change in future, to enable recognition of functions which belong to classes and such, that do not belong to classes (like inner functions, anonymous functions, ...whatever)
+
+<table>
+  <tr><td>Signature</td>
+      <td colspan="2"><code>def ismethod( arg: Callable ) -> bool</code></td>
+      </tr>
+  <tr><td>Parameters</td>
+      <td><code>arg</code></td>
+      <td>Any callable</td>
+      </tr>
+</table>
+
+### <code>ismethodorfunction</code> ###
+Returns <code>True</code>, if <code>arg</code> is of type <code>method</code>or<code>function</code>; <code>False</code> otherwise.
+
+<table>
+  <tr><td>Signature</td>
+      <td colspan="2"><code>def ismethodorfunction( arg: Callable  ) -> bool</code></td>
+      </tr>
+  <tr><td>Parameters</td>
+      <td><code>arg</code></td>
+      <td>Any callable</td>
+      </tr>
+</table>
+
+### <code>isstaticmethod</code> ###
+Returns <code>True</code>, if <code>arg</code> is of type <code>@staticmethod def funct()</code>; <code>False</code> otherwise.
+
+<table>
+  <tr><td>Signature</td>
+      <td><code>def isstaticmethod( cls: Type[ T ], arg: Callable ) -> bool</code></td>
+      </tr>
+  <tr><td style="vertical-align:top">Parameters</td>
+      <td>
+        <table style="margin:0;width:100%">
+          <tr>
+            <td><code>cls</code></td>
+            <td>A class</td>
+            </tr>
+            <tr>
+              <td><code>arg</code></td>
+              <td>Any callable</td>
+              </tr>
+        </table>
+      </td>
+      </tr>
+</table>
