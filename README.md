@@ -44,11 +44,11 @@ Returns <code>True</code>, if <code>arg</code> is of type <code>@classmethod def
   <tr><td>Signature</td>
       <td colspan="2"><code>def isclassmethod( cls: Type[ T ], arg: Callable ) -> bool</code></td>
       </tr>
-  <tr><td style="rowspan=2;vertical-align:top">Parameters</td>
+  <tr><td>Parameters</td>
       <td><code>cls</code></td>
       <td>A class</td>
       </tr>
-  <tr><!-- td></td -->
+  <tr><td></td>
       <td><code>arg</code></td>
       <td>Any callable</td>
       </tr>
@@ -107,20 +107,14 @@ Returns <code>True</code>, if <code>arg</code> is of type <code>@staticmethod de
 
 <table>
   <tr><td>Signature</td>
-      <td><code>def isstaticmethod( cls: Type[ T ], arg: Callable ) -> bool</code></td>
+      <td colspan="2"><code>def isstaticmethod( cls: Type[ T ], arg: Callable ) -> bool</code></td>
       </tr>
-  <tr><td style="vertical-align:top">Parameters</td>
-      <td>
-        <table style="margin:0;width:100%">
-          <tr>
-            <td><code>cls</code></td>
-            <td>A class</td>
-            </tr>
-            <tr>
-              <td><code>arg</code></td>
-              <td>Any callable</td>
-              </tr>
-        </table>
-      </td>
+  <tr><td>Parameters</td>
+      <td><code>cls</code></td>
+      <td>A class</td>
+      </tr>
+  <tr><td></td>
+      <td><code>arg</code></td>
+      <td>Any callable</td>
       </tr>
 </table>
