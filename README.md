@@ -71,7 +71,7 @@ Returns <code>True</code>, if <code>arg</code> is of type <code>@classmethod def
 Returns <code>True</code>, if <code>arg</code> is of type pyeos <code>function</code>; <code>False</code> otherwise.  
 
 Note: In Python, function definitions in classes are not bound. Therefor they are categorized as functions, not as methods.
-      PyEOS functions additionally require NOT to be a member of a class (which makes staticmethods NO functions)
+      PyEOS functions additionally require NOT to be a member of a class (which turns staticmethods into NOT functions)
 
 <table>
   <tr><td>Signature</td>
@@ -87,7 +87,7 @@ Note: In Python, function definitions in classes are not bound. Therefor they ar
 Returns <code>True</code>, if <code>arg</code> is of type <code>method</code>; <code>False</code> otherwise.
 
 Note: In Python, methods are bound functions. <code>ismethod</code> will not reveal function definitions in classes as methods.
-      PyEOS methods additionally require to be members of classes (which makes staticmethods to be methods instead of functions)
+      PyEOS methods additionally require to be members of classes (which turns staticmethods into methods instead of functions)
 
 <table>
   <tr><td>Signature</td>
