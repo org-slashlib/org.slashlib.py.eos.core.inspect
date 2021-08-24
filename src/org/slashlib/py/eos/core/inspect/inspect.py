@@ -15,6 +15,20 @@ from   typing       import cast
 from   typing       import Type
 from   typing       import TypeVar
 
+from   .utils       import get_local_part
+
+CALL = "__call__"
+DOT  = "."
+
+def iscallable( arg: Callable ) -> bool:
+    """
+        Returns:
+            True, if arg is callable (provides '__call__'); False otherwise
+    """
+    # note: return hasattr( arg, CALL ) returns true for all classes, which is
+    #       not what we want.
+    return CALL in dir( arg )
+
 T = TypeVar( 'T' )
 
 def isclass( arg: Type[ T ]) -> bool:
@@ -24,26 +38,47 @@ def isclass( arg: Type[ T ]) -> bool:
     """
     return inspect.isclass( arg )
 
-def ismethod( arg: Callable ) -> bool:
-    """
-        Returns:
-            True, if arg is of type {method}; False otherwise
-    """
-    return inspect.ismethod( arg )
-
-def isfunction( arg: Callable ) -> bool:
-    """
-        Returns:
-            True, if arg is of type {function}; False otherwise
-    """
-    return inspect.isfunction( arg )
-
 def ismethodorfunction( arg: Callable  ) -> bool:
     """
         Returns:
             True, if arg is of type {method} or {function}; False otherwise
     """
-    return ismethod( arg ) or isfunction( arg )
+    return inspect.ismethod( arg ) or inspect.isfunction( arg )
+
+def _ismethod( arg: Callable ) -> bool:
+    """
+        Internal helper function.
+
+        Returns:
+            True, if arg is of type {method}; False otherwise
+    """
+    return get_local_part( arg.__qualname__ ).endswith( DOT + arg.__name__ )
+
+def ismethod( arg: Callable ) -> bool:
+    """
+        Returns:
+            True, if arg is of type {method}; False otherwise
+    """
+    return ismethodorfunction( arg ) and _ismethod( arg )
+
+def _isfunction( arg: Callable ) -> bool:
+    """
+        Internal helper function.
+
+        Returns:
+            True, if arg is of type {function}; False otherwise
+    """
+    return inspect.isfunction( arg ) and ( get_local_part( arg.__qualname__ ) == arg.__name__ )
+
+def isfunction( arg: Callable ) -> bool:
+    """
+        Functions, which are not and will not become bound members of classes,
+        are defined to be pyeos functions.
+
+        Returns:
+            True, if arg is of type {function}; False otherwise
+    """
+    return ( not inspect.ismethod( arg )) and _isfunction( arg )
 
 def isstaticmethod( cls: Type[ T ], arg: Callable ) -> bool:
     """
@@ -67,7 +102,7 @@ def isclassmethod( cls: Type[ T ], arg: Callable ) -> bool:
         Returns:
             True, if arg is of type '@classmethod def funct()'; False otherwise
     """
-    if  ( ismethod( arg )):
+    if  ( inspect.ismethod( arg )):
           # make sure, this works even without type checking
           cls = cls if isclass( cls ) else cast( Any, cls ).__class__
           return cast( Any, arg ).__self__ is cls

@@ -8,6 +8,7 @@
 """ org.slashlib.py.eos.core.inspect - inspection functions """
 from __future__     import absolute_import
 
+from .inspect       import iscallable
 from .inspect       import isclass
 from .inspect       import ismethod
 from .inspect       import isfunction
