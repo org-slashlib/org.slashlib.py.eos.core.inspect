@@ -27,7 +27,7 @@ This project is in alpha state.
 <code>org.slashlib.py.eos.core.inspect</code> is a package required by PyEOS.
 
 ### <code>iscallable</code> ###
-Returns <code>True</code>, if <code>arg</code> is callable (provides <code>__call__</code>); <code>False</code> otherwise.
+Returns <code>True</code>, if <code>arg</code> is callable (provides <code>\_\_call\_\_</code>); <code>False</code> otherwise.
 <table>
   <tr><td>Signature</td>
       <td colspan="2"><code>def iscallable( arg: Callable ) -> bool</code></td>
