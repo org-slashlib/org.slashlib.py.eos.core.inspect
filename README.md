@@ -1,4 +1,4 @@
-# org.slashlib.py.eos.core.inspect #
+# Package documentation of <code>org.slashlib.py.eos.core.inspect</code>  
 
 inspection library for PyEOS.  
 This project is in alpha state.
@@ -8,6 +8,7 @@ This project is in alpha state.
 * Usage
   * [Getting started guide (see 'getting started' below)](#getting-started)
 * Developers
+  * [API](docs/markdown/index.md)
   * [Frameworks used for building, testing, etc.](docs/frameworks.md)
 
 ## getting started ##

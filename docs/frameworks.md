@@ -1,4 +1,10 @@
-## frameworks ##
+# Package documentation of <code>org.slashlib.py.eos.core.inspect</code>  
+
+* [API Index](markdown/index.md)
+* Frameworks (this is, where you are)
+* [README](../README.md)
+
+## Frameworks ##
 
 ### [python](https://www.python.org/) ###
 
@@ -29,9 +35,9 @@ Code analysis for improving code quality and, if activated in the editor, for fa
 
 Optional static type checking for better code quality.
 
-### documentation ###
+### documentation using [googledoc style](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html) and [sphinx](https://www.sphinx-doc.org/en/master/) ###
 
-Pydoc style used in sourcecode. Currently there is no framework in use for generation the documentation.
+Sourcecode documented with [googledoc style](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html). The documentation then is created semi-automated by [sphinx](https://www.sphinx-doc.org/en/master) with the help of [napoleon](https://www.sphinx-doc.org/en/master/usage/extensions/napoleon.html) and [sphinx-markdown-builder](https://pypi.org/project/sphinx-markdown-builder).
 
 ### [testing with unittest](https://docs.python.org/3/library/unittest.html) ###
 
